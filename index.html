@@ -60,7 +60,12 @@
 <body>
 
 <h1>Jurnal Mingguan Anak Indonesia Hebat</h1>
-<p><strong>Minggu ke-</strong> <input type="text"> / <strong>Tanggal:</strong> <input type="date"> s.d. <input type="date"></p>
+
+<!-- FORM MULAI DI SINI -->
+<form method="POST" action="https://script.google.com/macros/s/AKfycb9fJcesqAFsakRXsyAVRaCx6c6j5q8j9LbSvLdHkHh6qsAJ3XLE3TSm8k7qN5znWvr/exec">
+
+<p><strong>Minggu ke-</strong> <input name="minggu" type="text"> / 
+<strong>Tanggal:</strong> <input name="tanggal_mulai" type="date"> s.d. <input name="tanggal_selesai" type="date"></p>
 
 <table>
   <thead>
@@ -76,62 +81,18 @@
     </tr>
   </thead>
   <tbody>
-    <!-- Gunakan loop jika ingin otomatis -->
     <script>
       const hari = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
-      document.write(hari.map(h => `
+      document.write(hari.map((h, i) => `
         <tr>
           <td>${h}</td>
-          <td>
-            <div class="checkbox-group">
-              <label><input type="checkbox"> &lt;05.00</label>
-              <label><input type="checkbox"> 05–06</label>
-              <label><input type="checkbox"> &gt;06</label>
-            </div>
-          </td>
-          <td>
-            <div class="checkbox-group">
-              <label><input type="checkbox"> Subuh</label>
-              <label><input type="checkbox"> Dhuha</label>
-              <label><input type="checkbox"> Dzuhur</label>
-              <label><input type="checkbox"> Ashar</label>
-              <label><input type="checkbox"> Maghrib</label>
-              <label><input type="checkbox"> Isya</label>
-              <label><input type="checkbox"> Tahajud</label>
-              <label><input type="checkbox"> Witir</label>
-            </div>
-          </td>
-          <td>
-            <label><input type="checkbox"> &lt;15 mnt</label><br>
-            <label><input type="checkbox"> ≥15 mnt</label>
-          </td>
-          <td>
-            <label><input type="checkbox"> Ya</label>
-            <label><input type="checkbox"> Tidak</label>
-          </td>
-          <td>
-            <div class="checkbox-group">
-              <label><input type="checkbox"> &lt;1</label>
-              <label><input type="checkbox"> 1–2</label>
-              <label><input type="checkbox"> &gt;2</label>
-            </div>
-          </td>
-          <td>
-            <div class="checkbox-group">
-  <label><input type="checkbox"> Membantu tetangga/teman</label>
-  <label><input type="checkbox"> Ikut gotong royong</label>
-  <label><input type="checkbox"> Sopan saat berbicara</label>
-  <label><input type="checkbox"> Buang sampah dan ajak teman</label>
-  <label><input type="checkbox"> Salam & terima kasih</label>
-</div>
-          </td>
-          <td>
-            <div class="checkbox-group">
-              <label><input type="checkbox"> &lt;20.00</label>
-              <label><input type="checkbox"> 20.00–21.00</label>
-              <label><input type="checkbox"> &gt;21.00</label>
-            </div>
-          </td>
+          <td><input name="bangun_${i}" type="text" placeholder="waktu bangun"></td>
+          <td><input name="ibadah_${i}" type="text" placeholder="sholat/dzikir"></td>
+          <td><input name="olahraga_${i}" type="text"></td>
+          <td><input name="makan_${i}" type="text"></td>
+          <td><input name="belajar_${i}" type="text"></td>
+          <td><input name="masyarakat_${i}" type="text"></td>
+          <td><input name="tidur_${i}" type="text"></td>
         </tr>
       `).join(''));
     </script>
@@ -141,21 +102,31 @@
 <h3>Refleksi Mingguan</h3>
 <ol>
   <li>Kebiasaan yang paling aku jaga minggu ini:
-    <textarea></textarea>
+    <textarea name="refleksi_1"></textarea>
   </li>
   <li>Kebiasaan yang belum rutin dan ingin aku perbaiki:
-    <textarea></textarea>
+    <textarea name="refleksi_2"></textarea>
   </li>
   <li>Hal baik yang aku rasakan dari kebiasaan ini:
-    <textarea></textarea>
+    <textarea name="refleksi_3"></textarea>
   </li>
 </ol>
 
 <p><strong>Mengetahui:</strong><br>
-Orang Tua/Wali: <input type="text" style="width: 40%"><br>
-Nama Siswa: <input type="text" style="width: 40%"></p>
+Orang Tua/Wali: <input name="ortu" type="text" style="width: 40%"><br>
+Nama Siswa: <input name="nama" type="text" style="width: 40%"></p>
 
-<button onclick="window.print()">🖨 Cetak / Simpan PDF</button>
+<button type="submit">Kirim ke Spreadsheet</button>
+<button type="button" onclick="window.print()">🖨 Cetak / Simpan PDF</button>
+
+</form>
+<!-- FORM SELESAI -->
+
+<script>
+  document.querySelector("form").addEventListener("submit", function () {
+    alert("Terima kasih! Data kamu berhasil dikirim 😊");
+  });
+</script>
 
 </body>
 </html>
