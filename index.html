@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Jurnal Mingguan Anak Hebat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; max-width: 800px; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #218838; }
+    #status { margin-top: 15px; font-weight: bold; color: blue; }
+  </style>
+</head>
+<body>
+  <h2>📘 Form Jurnal Mingguan Anak Indonesia Hebat</h2>
+  <form id="jurnalForm">
+    <label>Hari:</label>
+    <input type="text" name="hari" required>
+
+    <label>Bangun Pagi (Jam):</label>
+    <input type="text" name="bangun" placeholder="Contoh: 05.00">
+
+    <label>Sholat (Wajib & Sunnah):</label>
+    <input type="text" name="sholat" placeholder="Contoh: Subuh, Dzuhur, Dhuha">
+
+    <label>Olahraga (Durasi):</label>
+    <input type="text" name="olahraga" placeholder="Contoh: 20 menit">
+
+    <label>Makan Sehat:</label>
+    <input type="text" name="makan" placeholder="Ya / Tidak">
+
+    <label>Belajar (Jam):</label>
+    <input type="text" name="belajar" placeholder="Contoh: 1.5 jam">
+
+    <label>Bermasyarakat (Aktivitas):</label>
+    <input type="text" name="bermasyarakat" placeholder="Contoh: Membantu orang tua, Menyapa tetangga">
+
+    <label>Tidur Malam (Jam):</label>
+    <input type="text" name="tidur" placeholder="Contoh: 20.00">
+
+    <label>Refleksi Mingguan:</label>
+    <textarea name="refleksi" rows="4" placeholder="Tuliskan hal baik atau kebiasaan yang ingin ditingkatkan..."></textarea>
+
+    <button type="submit">Kirim</button>
+    <p id="status"></p>
+  </form>
+
+  <script>
+    document.getElementById("jurnalForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = {};
+      formData.forEach((v, k) => data[k] = v);
+
+      fetch("https://script.google.com/macros/s/AKfycby9fJcesqAFsakRXsyAVRaCx6c6j5q8j9LbSVLdHkHh6qsAJ3XLE3TSm8k7qN5znWvr/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.text())
+      .then(txt => {
+        document.getElementById("status").textContent = "✅ Data berhasil dikirim!";
+        e.target.reset();
+      })
+      .catch(err => {
+        document.getElementById("status").textContent = "❌ Gagal mengirim data.";
+      });
+    });
+  </script>
+</body>
+</html>
