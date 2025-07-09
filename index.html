@@ -1,89 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Jurnal Mingguan Anak Hebat</title>
+  <title>Jurnal Mingguan Anak Indonesia Hebat</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 30px; max-width: 800px; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    input[type="text"], textarea {
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    table {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border-collapse: collapse;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 6px;
+      text-align: center;
+    }
+    th {
+      background: #3498db;
+      color: white;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+    }
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 10px;
+      resize: vertical;
     }
     button {
       margin-top: 20px;
       padding: 10px 20px;
-      font-size: 16px;
-      background-color: #28a745;
+      background: #27ae60;
       color: white;
       border: none;
-      border-radius: 4px;
       cursor: pointer;
+      font-size: 16px;
     }
-    button:hover { background-color: #218838; }
-    #status { margin-top: 15px; font-weight: bold; color: blue; }
+    button:hover {
+      background: #219150;
+    }
   </style>
 </head>
 <body>
-  <h2>📘 Form Jurnal Mingguan Anak Indonesia Hebat</h2>
-  <form id="jurnalForm">
-    <label>Hari:</label>
-    <input type="text" name="hari" required>
 
-    <label>Bangun Pagi (Jam):</label>
-    <input type="text" name="bangun" placeholder="Contoh: 05.00">
+<h1>Jurnal Mingguan Anak Indonesia Hebat</h1>
+<p><strong>Minggu ke-</strong> <input type="text"> / <strong>Tanggal:</strong> <input type="date"> s.d. <input type="date"></p>
 
-    <label>Sholat (Wajib & Sunnah):</label>
-    <input type="text" name="sholat" placeholder="Contoh: Subuh, Dzuhur, Dhuha">
+<table>
+  <thead>
+    <tr>
+      <th>Hari</th>
+      <th>Bangun Pagi</th>
+      <th>Ibadah (Wajib & Sunnah)</th>
+      <th>Olahraga</th>
+      <th>Makan Sehat</th>
+      <th>Belajar</th>
+      <th>Bermasyarakat</th>
+      <th>Tidur Malam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Gunakan loop jika ingin otomatis -->
+    <script>
+      const hari = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+      document.write(hari.map(h => `
+        <tr>
+          <td>${h}</td>
+          <td>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> &lt;05.00</label>
+              <label><input type="checkbox"> 05–06</label>
+              <label><input type="checkbox"> &gt;06</label>
+            </div>
+          </td>
+          <td>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> Subuh</label>
+              <label><input type="checkbox"> Dhuha</label>
+              <label><input type="checkbox"> Dzuhur</label>
+              <label><input type="checkbox"> Ashar</label>
+              <label><input type="checkbox"> Maghrib</label>
+              <label><input type="checkbox"> Isya</label>
+              <label><input type="checkbox"> Tahajud</label>
+              <label><input type="checkbox"> Witir</label>
+            </div>
+          </td>
+          <td>
+            <label><input type="checkbox"> &lt;15 mnt</label><br>
+            <label><input type="checkbox"> ≥15 mnt</label>
+          </td>
+          <td>
+            <label><input type="checkbox"> Ya</label>
+            <label><input type="checkbox"> Tidak</label>
+          </td>
+          <td>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> &lt;1</label>
+              <label><input type="checkbox"> 1–2</label>
+              <label><input type="checkbox"> &gt;2</label>
+            </div>
+          </td>
+          <td>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> Membantu orang tua</label>
+              <label><input type="checkbox"> Sopan bicara</label>
+              <label><input type="checkbox"> Buang sampah</label>
+              <label><input type="checkbox"> Menyapa orang</label>
+            </div>
+          </td>
+          <td>
+            <div class="checkbox-group">
+              <label><input type="checkbox"> &lt;20.00</label>
+              <label><input type="checkbox"> 20.00–21.00</label>
+              <label><input type="checkbox"> &gt;21.00</label>
+            </div>
+          </td>
+        </tr>
+      `).join(''));
+    </script>
+  </tbody>
+</table>
 
-    <label>Olahraga (Durasi):</label>
-    <input type="text" name="olahraga" placeholder="Contoh: 20 menit">
+<h3>Refleksi Mingguan</h3>
+<ol>
+  <li>Kebiasaan yang paling aku jaga minggu ini:
+    <textarea></textarea>
+  </li>
+  <li>Kebiasaan yang belum rutin dan ingin aku perbaiki:
+    <textarea></textarea>
+  </li>
+  <li>Hal baik yang aku rasakan dari kebiasaan ini:
+    <textarea></textarea>
+  </li>
+</ol>
 
-    <label>Makan Sehat:</label>
-    <input type="text" name="makan" placeholder="Ya / Tidak">
+<p><strong>Mengetahui:</strong><br>
+Orang Tua/Wali: <input type="text" style="width: 40%"><br>
+Nama Siswa: <input type="text" style="width: 40%"></p>
 
-    <label>Belajar (Jam):</label>
-    <input type="text" name="belajar" placeholder="Contoh: 1.5 jam">
+<button onclick="window.print()">🖨 Cetak / Simpan PDF</button>
 
-    <label>Bermasyarakat (Aktivitas):</label>
-    <input type="text" name="bermasyarakat" placeholder="Contoh: Membantu orang tua, Menyapa tetangga">
-
-    <label>Tidur Malam (Jam):</label>
-    <input type="text" name="tidur" placeholder="Contoh: 20.00">
-
-    <label>Refleksi Mingguan:</label>
-    <textarea name="refleksi" rows="4" placeholder="Tuliskan hal baik atau kebiasaan yang ingin ditingkatkan..."></textarea>
-
-    <button type="submit">Kirim</button>
-    <p id="status"></p>
-  </form>
-
-  <script>
-    document.getElementById("jurnalForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const data = {};
-      formData.forEach((v, k) => data[k] = v);
-
-      fetch("https://script.google.com/macros/s/AKfycby9fJcesqAFsakRXsyAVRaCx6c6j5q8j9LbSVLdHkHh6qsAJ3XLE3TSm8k7qN5znWvr/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => res.text())
-      .then(txt => {
-        document.getElementById("status").textContent = "✅ Data berhasil dikirim!";
-        e.target.reset();
-      })
-      .catch(err => {
-        document.getElementById("status").textContent = "❌ Gagal mengirim data.";
-      });
-    });
-  </script>
 </body>
 </html>
